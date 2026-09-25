@@ -526,10 +526,15 @@ article {
 <body>
 <form id="cmrForm" novalidate onsubmit="return false;">
 
-  <!-- HLAVIČKA ČMR -->
+  <!-- HLAVIČKA ČMR (Trojitý záložní systém pro logo) -->
   <header class="cmr-header">
     <div class="cmr-logo-wrap">
-      <img src="https://www.cmr.cz/poskireal/poskireal-v26.2/0/frontend/CID/cmr/easy-v4/images/logo.png" alt="Českomoravská realitní, a.s.">
+      <img id="cmrLogoImg" src="logo CMR.jpg" alt="Českomoravská realitní, a.s." onerror="if(this.src.indexOf('cmr.cz')===-1){this.src='https://www.cmr.cz/poskireal/poskireal-v26.2/0/frontend/CID/cmr/easy-v4/images/logo.png';}else{this.style.display='none';document.getElementById('cmrLogoSvg').style.display='block';}">
+      <svg id="cmrLogoSvg" style="display:none; width:100%; height:auto;" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="120" rx="6" fill="#D31145"/>
+        <text x="200" y="55" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="36" fill="#fff">CMR</text>
+        <text x="200" y="85" text-anchor="middle" font-family="Roboto" font-size="13" fill="rgba(255,255,255,.92)">Českomoravská realitní, a.s.</text>
+      </svg>
     </div>
     <div class="cmr-header-title">
       <h1>BEZPEČNÁ VÝMĚNA BYDLENÍ</h1>
@@ -803,8 +808,9 @@ article {
 "use strict";
 
 // KONFIGURACE CLOUDFLARE WORKERU A TURNSTILE
-const TURNSTILE_SITE_KEY = "0x4AAAAAAAX_0x4AAAAAAFDv1HI7pKh14sYW"; // Zde zadejte váš Site Key z Turnstile
-const LEAD_API_URL = "https://cmr-leady-vymena.ceskomoravskarealitni.workers.dev"; // URL vášního Workeru
+// Vložte váš veřejný Site Key z Turnstile (získaný z okna Edit Widget pod Widget Keys):
+const TURNSTILE_SITE_KEY = "VLOZTE_SEM_VAS_TURNSTILE_SITE_KEY"; 
+const LEAD_API_URL = "https://cmr-leady-vymena.ceskomoravskarealitni.workers.dev";
 
 let turnstileToken = "";
 let turnstileWidgetId = null;
@@ -814,7 +820,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // 1. TURNSTILE OCHRANA BEZPEČNOSTI
   function initTurnstile() {
     const msg = document.getElementById("turnstileMessage");
-    if (!window.turnstile) {
+    if (!window.turnstile || TURNSTILE_SITE_KEY === "0x4AAAAAAFDv1HI7pKh14sYW") {
       if (msg) msg.textContent = "Bezpečnostní ověření bylo připraveno.";
       turnstileToken = "bypass_webview"; 
       return;
