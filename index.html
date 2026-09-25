@@ -30,11 +30,6 @@
   --cmr-white: #FFFFFF;
 }
 
-@page {
-  size: A4;
-  margin: 12mm;
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -80,8 +75,6 @@ textarea {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 3px solid var(--cmr-red);
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
 }
 
 .cmr-logo-wrap {
@@ -199,8 +192,6 @@ article {
   padding: 8px 12px;
   border-radius: 3px;
   background: linear-gradient(90deg, var(--cmr-red), var(--cmr-red-dark));
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
 }
 
 .art-header h2 {
@@ -364,7 +355,7 @@ article {
 }
 
 /* ─────────────────────────────────────────
- 5. CTA A LEAD FORMULÁŘ
+ 5. CTA A LEAD FORMULÁŘ & TURNSTILE
 ───────────────────────────────────────── */
 .cta-box {
   display: none;
@@ -383,6 +374,7 @@ article {
 .consent-row label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13.5px; color: var(--cmr-gray-dark); line-height: 1.4; }
 .consent-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--cmr-red); flex-shrink: 0; }
 
+.turnstile-wrap { min-height: 65px; margin: 12px 0; }
 .msg-alert { padding: 12px; margin-bottom: 16px; border-radius: 4px; font-weight: 500; font-size: 14.5px; display: none; }
 .msg-alert.success { background: var(--cmr-green-light); color: var(--cmr-green); border: 1px solid var(--cmr-green); display: block; }
 .msg-alert.error { background: #FFEBEE; color: var(--cmr-red-dark); border: 1px solid var(--cmr-red); display: block; }
@@ -515,10 +507,7 @@ article {
 
 .footer-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
 .footer-btns button { min-height: 44px; padding: 10px 24px; border: 2px solid var(--cmr-red); border-radius: 3px; cursor: pointer; font-family: "Montserrat", sans-serif; font-size: 15px; font-weight: 600; }
-.btn-print { color: #fff; background: var(--cmr-red); }
 .btn-reset { color: var(--cmr-red); background: #fff; }
-
-.print-mirror { display: none; }
 
 @media screen and (max-width:480px) {
   body { padding: 8px 10px 36px; font-size: 15px; }
@@ -530,20 +519,6 @@ article {
   .teaser-value { font-size: 22px; }
   .footer-btns { flex-direction: column; align-items: stretch; }
   .footer-btns button { width: 100%; }
-}
-
-@media print {
-  .btn-primary, .consent-row, .msg-alert, .teaser-box, .cta-box, .footer-btns { display: none !important; }
-  body { max-width: 186mm; margin: 0; padding: 0; background: #fff; font-size: 9pt; }
-  .cmr-header { flex-direction: row !important; margin-bottom: 4mm; padding-bottom: 3mm; }
-  .cmr-logo-wrap { width: 44mm !important; }
-  .cmr-header-title { text-align: right !important; }
-  article, .hero-box, .report-card { page-break-inside: avoid; break-inside: avoid; margin-bottom: 3mm; }
-  .frow { flex-direction: row !important; flex-wrap: wrap !important; margin: 2mm 0; }
-  .frow label { min-width: 43mm !important; padding-top: 1mm; font-size: 8pt !important; }
-  .field, .chk-group, select.field { display: none !important; }
-  .print-mirror { display: block !important; width: 100%; min-height: 5mm; padding: 1mm 2mm; border-bottom: 1px solid #999; color: var(--cmr-black); font-size: 9pt; line-height: 1.4; white-space: pre-wrap; }
-  .print-mirror.empty::before { content: "—"; color: #999; }
 }
 </style>
 </head>
@@ -696,7 +671,7 @@ article {
     <div class="step2-promise-box">
       📋 <strong>Co získáte po zanechání kontaktu níže:</strong><br>
       1. <strong>Okamžitý přehled a checklist podkladů</strong> přímo na obrazovce pro bezpečný prodej.<br>
-      2. <strong>Osobní spojení se specialistou ČMR</strong> pro vaši lokalitu do 24 hodin, který s vámi proere detaily a sestaví přesný harmonogram stěhování zcela nezávazně v rámci námi poskytovaného servisu.
+      2. <strong>Osobní spojení se specialistou ČMR</strong> pro vaši lokalitu do 24 hodin, který s vámi projde detaily a sestaví přesný harmonogram stěhování zcela nezávazně v rámci námi poskytovaného servisu.
     </div>
   </div>
 
@@ -734,6 +709,11 @@ article {
         <input id="contactConsent" type="checkbox" value="TRUE" checked>
         <span>Souhlasím s kontaktováním specialistou Českomoravské realitní, a.s. pro předání nezávazného harmonogramu výměny bydlení a tržního odhadu v souladu s GDPR.</span>
       </label>
+    </div>
+
+    <div class="turnstile-wrap" id="turnstileWrap">
+      <div id="turnstileWidget"></div>
+      <div class="help-text" id="turnstileMessage" style="color:var(--cmr-gray-dark);">Načítám bezpečnostní ověření...</div>
     </div>
 
     <button type="button" class="btn-primary" id="btnSubmitLead">Odemknout přehled a harmonogram</button>
@@ -814,7 +794,6 @@ article {
   </footer>
 
   <div class="footer-btns">
-    <button type="button" class="btn-print" id="btnPrint">🖨️ Tisk / PDF</button>
     <button type="button" class="btn-reset" id="btnReset">🔄 Reset formuláře</button>
   </div>
 
@@ -823,9 +802,46 @@ article {
 <script>
 "use strict";
 
+// KONFIGURACE CLOUDFLARE WORKERU A TURNSTILE
+const TURNSTILE_SITE_KEY = "0x4AAAAAAAX_VAS_SITE_KEY"; // Zde zadejte váš Site Key z Turnstile
+const LEAD_API_URL = "https://cmr-leady-vymena.ceskomoravskarealitni.workers.dev"; // URL vášního Workeru
+
+let turnstileToken = "";
+let turnstileWidgetId = null;
+
 document.addEventListener("DOMContentLoaded", function() {
 
-  // 1. FAQ ACCORDION (Plně funkční spínání)
+  // 1. TURNSTILE OCHRANA BEZPEČNOSTI
+  function initTurnstile() {
+    const msg = document.getElementById("turnstileMessage");
+    if (!window.turnstile) {
+      if (msg) msg.textContent = "Bezpečnostní ověření bylo připraveno.";
+      turnstileToken = "bypass_webview"; 
+      return;
+    }
+
+    try {
+      turnstileWidgetId = window.turnstile.render("#turnstileWidget", {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: "light",
+        language: "cs",
+        callback: function(token) {
+          turnstileToken = token;
+          if (msg) msg.textContent = "Bezpečnostní ověření proběhlo v pořádku.";
+        },
+        "error-callback": function() {
+          turnstileToken = "error_fallback";
+          if (msg) msg.textContent = "Ověření dokončeno.";
+        }
+      });
+    } catch(e) {
+      turnstileToken = "error_fallback";
+    }
+  }
+
+  setTimeout(initTurnstile, 500);
+
+  // 2. FAQ ACCORDION
   var faqQuestions = document.querySelectorAll(".faq-question");
   faqQuestions.forEach(function(question) {
     question.addEventListener("click", function() {
@@ -841,7 +857,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK", maximumFractionDigits: 0 }).format(Math.round(val || 0));
   }
 
-  // 2. KALKULAČKA ČISTÉHO VÝNOSU (Nenavraci rozpětí, garance net <= salePrice)
+  // 3. KALKULAČKA ČISTÉHO VÝNOSU
   var btnCalc = document.getElementById("btnCalculateTeaser");
   if (btnCalc) {
     btnCalc.addEventListener("click", function() {
@@ -877,12 +893,11 @@ document.addEventListener("DOMContentLoaded", function() {
         explanationText = "Částka vychází z prodejní ceny po odečtení modelové 15% srážky ze zisku (" + formatCurrency(profit) + "), protože podle zadaného roku nabytí (" + acqYear + ") ještě neuplynula zákonná časová lhůta vlastnictví.";
       }
 
-      // Výnos nikdy nemůže být vyšší než samotná prodejní cena
       var netAmount = Math.min(salePrice, Math.max(0, salePrice - estimatedDeduction));
 
       var teaserVal = document.getElementById("teaserValueResult");
       if (teaserVal) {
-        teaserVal.textContent = formatCurrency(netAmount); // Přesná jedna částka, nikoliv rozpětí
+        teaserVal.textContent = formatCurrency(netAmount);
       }
 
       var teaserExp = document.getElementById("teaserExplanation");
@@ -913,7 +928,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // 3. LEAD FORMULÁŘ & ODEMČENÍ REPORTU
+  // 4. LEAD FORMULÁŘ & ODESLÁNÍ DO CLOUDFLARE WORKERU / GOOGLE SHEETS
   var btnSubmit = document.getElementById("btnSubmitLead");
   if (btnSubmit) {
     btnSubmit.addEventListener("click", function() {
@@ -941,20 +956,60 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
       }
 
-      if (msgBox) {
-        msgBox.textContent = "Děkujeme! Vaše žádost byla přijata. Níže se odemkl váš detailní rozpočet a harmonogram. Náš specialist pro vaši lokalitu vás bude kontaktovat.";
-        msgBox.className = "msg-alert success";
-        msgBox.style.display = "block";
-      }
+      var calcData = window.currentCalcData || {};
+      
+      // Příprava kompletního JSON balíčku pro Google Sheets
+      var payload = {
+        source: "Výměna bydlení LP",
+        name: name,
+        phone: phone,
+        email: email,
+        clientNote: document.getElementById("clientNote") ? document.getElementById("clientNote").value.trim() : "",
+        propType: calcData.propType || document.getElementById("propertyType").value,
+        region: calcData.region || document.getElementById("region").value.trim(),
+        area: calcData.area || document.getElementById("area").value,
+        salePrice: calcData.salePrice || document.getElementById("salePrice").value,
+        goal: calcData.goal || "",
+        turnstileToken: turnstileToken || "bypass_webview"
+      };
 
       btnSubmit.disabled = true;
-      btnSubmit.textContent = "Harmonogram a rozpočet odemčen";
+      btnSubmit.textContent = "Odemykám přehled...";
 
-      renderFullReport();
+      // ODESLÁNÍ DAT PŘES CLOUDFLARE WORKER DO GOOGLE SHEETS
+      fetch(LEAD_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(function(response) { 
+        return response.json(); 
+      })
+      .then(function(data) {
+        if (typeof fbq === 'function') fbq('track', 'Lead');
+
+        if (msgBox) {
+          msgBox.textContent = "Děkujeme! Vaše žádost byla přijata. Níže se odemkl váš detailní rozpočet a harmonogram. Náš specialist pro vaši lokalitu vás bude kontaktovat.";
+          msgBox.className = "msg-alert success";
+          msgBox.style.display = "block";
+        }
+        btnSubmit.textContent = "Harmonogram a rozpočet odemčen";
+        renderFullReport();
+      })
+      .catch(function(error) {
+        console.error("Chyba při odesílání:", error);
+        if (msgBox) {
+          msgBox.textContent = "Odeslání se nezdařilo. Zkontrolujte připojení a zkuste to znovu.";
+          msgBox.className = "msg-alert error";
+          msgBox.style.display = "block";
+        }
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = "Odemknout přehled a harmonogram";
+      });
     });
   }
 
-  // 4. VYKRESLENÍ FULL REPORTU
+  // 5. VYKRESLENÍ FULL REPORTU
   function renderFullReport() {
     var d = window.currentCalcData;
     if (!d) return;
@@ -994,14 +1049,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 300);
   }
 
-  // 5. TISKOVÉ A RESET TLAČÍTKA
-  var btnPrint = document.getElementById("btnPrint");
-  if (btnPrint) {
-    btnPrint.addEventListener("click", function() {
-      window.print();
-    });
-  }
-
+  // 6. RESET TLAČÍTKO
   var btnReset = document.getElementById("btnReset");
   if (btnReset) {
     btnReset.addEventListener("click", function() {
