@@ -3,1074 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="description" content="Českomoravská realitní, a.s. | Bezpečná výměna bydlení a kalkulačka čistého výnosu z prodeje nemovitosti. Získejte nezávazný harmonogram a posouzení prodeje.">
-<title>ČMR | Bezpečná výměna bydlení & Kalkulačka čistého výnosu</title>
-
+<meta name="description" content="Prodat nejdřív, nebo koupit nejdřív? Čtyři otázky a dostanete doporučené pořadí výměny bydlení.">
+<title>ČMR | Výměna bydlení: v jakém pořadí prodat a koupit?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
-
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+gtag('js',new Date());gtag('config','AW-1038434503');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('consent','revoke');fbq('init','1433692415543795');fbq('track','PageView');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1038434503"></script>
 <style>
-:root {
-  --cmr-red: #D31145;
-  --cmr-red-dark: #A80D33;
-  --cmr-red-light: rgba(211, 17, 69, 0.06);
-  --cmr-black: #1A1A1A;
-  --cmr-gray-dark: #4A4A4A;
-  --cmr-gray-light: #F4F4F4;
-  --cmr-border: #E0E0E0;
-  --cmr-green: #2E7D32;
-  --cmr-green-light: rgba(46, 125, 50, 0.08);
-  --cmr-orange: #E65100;
-  --cmr-orange-light: rgba(230, 81, 0, 0.08);
-  --cmr-blue: #1565C0;
-  --cmr-yellow: #FFC107;
-  --cmr-yellow-light: #FFF8E1;
-  --cmr-white: #FFFFFF;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html {
-  background: #ececec;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 12px 16px 48px;
-  max-width: 820px;
-  margin-inline: auto;
-  overflow-x: hidden;
-  color: var(--cmr-black);
-  background: var(--cmr-white);
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-button, input, textarea, select {
-  font: inherit;
-}
-
-button {
-  touch-action: manipulation;
-}
-
-textarea {
-  resize: none;
-  overflow: hidden;
-}
-
-/* ─────────────────────────────────────────
- 1. HLAVIČKA A BRANDING ČMR
-───────────────────────────────────────── */
-.cmr-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 3px solid var(--cmr-red);
-}
-
-.cmr-logo-wrap {
-  width: 130px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.cmr-logo-wrap img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.cmr-header-title {
-  flex: 1;
-  text-align: right;
-}
-
-.cmr-header-title h1 {
-  margin: 0 0 4px;
-  color: var(--cmr-black);
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.cmr-header-title .subtitle {
-  color: var(--cmr-gray-dark);
-  font-size: 13px;
-}
-
-.document-id {
-  margin-top: 4px;
-  color: var(--cmr-red);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-/* ─────────────────────────────────────────
- 2. HERO SEKCE & TRUST BADGES
-───────────────────────────────────────── */
-.hero-box {
-  background: linear-gradient(180deg, var(--cmr-gray-light) 0%, #FFFFFF 100%);
-  border: 1px solid var(--cmr-border);
-  border-top: 4px solid var(--cmr-red);
-  border-radius: 6px;
-  padding: 24px 20px;
-  margin-bottom: 20px;
-}
-
-.hero-box h1 {
-  margin: 0 0 12px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 23px;
-  font-weight: 700;
-  color: var(--cmr-black);
-  line-height: 1.3;
-}
-
-.hero-box h2 {
-  margin: 0 0 18px;
-  font-family: "Roboto", sans-serif;
-  font-size: 15.5px;
-  font-weight: 400;
-  color: var(--cmr-gray-dark);
-  line-height: 1.55;
-}
-
-.trust-badges {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding-top: 14px;
-  border-top: 1px dashed var(--cmr-border);
-}
-
-.trust-badge-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--cmr-black);
-  background: #fff;
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--cmr-border);
-}
-
-.trust-badge-item svg {
-  width: 16px;
-  height: 16px;
-  fill: var(--cmr-red);
-  flex-shrink: 0;
-}
-
-/* ─────────────────────────────────────────
- 3. SEKCIONÁLNÍ GRID A FORMULÁŘE
-───────────────────────────────────────── */
-article {
-  margin-bottom: 18px;
-}
-
-.art-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding: 8px 12px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--cmr-red), var(--cmr-red-dark));
-}
-
-.art-header h2 {
-  margin: 0;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.art-num {
-  padding: 2px 8px;
-  border-radius: 3px;
-  color: #fff;
-  background: rgba(255,255,255,0.25);
-  font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.art-body p {
-  margin: 0 0 10px;
-  line-height: 1.5;
-}
-
-.frow {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.frow label {
-  min-width: 220px;
-  flex-shrink: 0;
-  padding-top: 8px;
-  font-weight: 500;
-  color: var(--cmr-gray-dark);
-  font-size: 15px;
-}
-
-.fw { flex: 1; min-width: 140px; }
-.fhalf { flex: 0 0 calc(50% - 10px); min-width: 120px; }
-
-.field {
-  width: 100%;
-  min-height: 40px;
-  padding: 8px 10px;
-  border: 1.5px solid var(--cmr-border);
-  border-radius: 4px;
-  outline: none;
-  background: #fafafa;
-  font-size: 16px;
-  color: var(--cmr-black);
-  transition: all 0.2s;
-}
-
-.field:focus {
-  border-color: var(--cmr-red);
-  background: #fff;
-  box-shadow: 0 0 0 3px var(--cmr-red-light);
-}
-
-.required { color: var(--cmr-red); font-weight: 700; }
-
-.help-text {
-  margin-top: 4px;
-  font-size: 12.5px;
-  color: var(--cmr-gray-dark);
-  line-height: 1.4;
-}
-
-.chk-group {
-  display: flex;
-  gap: 10px 20px;
-  flex-wrap: wrap;
-  margin: 6px 0;
-}
-
-.chk-group label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: auto;
-  padding-top: 0;
-  color: var(--cmr-black);
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 400;
-}
-
-.chk-group input[type="radio"],
-.chk-group input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--cmr-red);
-  flex-shrink: 0;
-}
-
-/* ─────────────────────────────────────────
- 4. UI BOXY A TEASER RESULT
-───────────────────────────────────────── */
-.info-box, .warning-box, .success-box {
-  margin: 12px 0;
-  padding: 12px 16px;
-  border-radius: 0 4px 4px 0;
-  font-size: 14.5px;
-  line-height: 1.5;
-}
-
-.info-box { border-left: 4px solid var(--cmr-blue); background: #E8F1FC; }
-.warning-box { border-left: 4px solid var(--cmr-yellow); background: var(--cmr-yellow-light); }
-.success-box { border-left: 4px solid var(--cmr-green); background: var(--cmr-green-light); }
-
-.teaser-box {
-  display: none;
-  padding: 20px;
-  margin: 16px 0;
-  border: 2px solid var(--cmr-green);
-  border-radius: 6px;
-  background: var(--cmr-green-light);
-  text-align: center;
-  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.teaser-box.visible { display: block; }
-.teaser-box h3 { margin: 0 0 8px; color: var(--cmr-green); font-family: "Montserrat", sans-serif; font-size: 16px; }
-.teaser-value { font-family: "Montserrat", sans-serif; font-size: 28px; font-weight: 700; color: var(--cmr-black); margin-bottom: 8px; text-align: center; }
-.teaser-explanation { font-size: 13.5px; color: var(--cmr-gray-dark); margin-bottom: 14px; text-align: center; font-style: italic; line-height: 1.45; background: #ffffff; padding: 10px 14px; border-radius: 4px; border: 1px solid rgba(46,125,50,0.2); }
-
-.risk-briefing-box {
-  background: #fff;
-  border: 1.5px solid var(--cmr-yellow);
-  border-left: 4px solid var(--cmr-orange);
-  border-radius: 4px;
-  padding: 14px 16px;
-  margin-top: 14px;
-  text-align: left;
-}
-.risk-briefing-box h4 { margin: 0 0 8px; color: var(--cmr-orange); font-family: "Montserrat", sans-serif; font-size: 15px; display: flex; align-items: center; gap: 6px; }
-.risk-briefing-box ul { margin: 6px 0 10px 18px; padding: 0; font-size: 13.5px; color: var(--cmr-gray-dark); }
-.risk-briefing-box li { margin-bottom: 4px; }
-
-.step2-promise-box {
-  background: var(--cmr-gray-light);
-  border: 1.5px solid var(--cmr-border);
-  border-left: 4px solid var(--cmr-red);
-  border-radius: 4px;
-  padding: 12px 14px;
-  margin-top: 12px;
-  font-size: 13.5px;
-  color: var(--cmr-black);
-  text-align: left;
-}
-.step2-promise-box strong { color: var(--cmr-red); font-family: "Montserrat", sans-serif; }
-
-@keyframes popIn {
-  from { opacity: 0; transform: translateY(10px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* ─────────────────────────────────────────
- 5. CTA A LEAD FORMULÁŘ & TURNSTILE
-───────────────────────────────────────── */
-.cta-box {
-  display: none;
-  padding: 20px;
-  border-radius: 6px;
-  background: var(--cmr-gray-light);
-  border-top: 4px solid var(--cmr-red);
-  margin-top: 20px;
-}
-
-.cta-box.visible { display: block; }
-.cta-box h3 { margin: 0 0 10px; font-family: "Montserrat", sans-serif; font-size: 18px; color: var(--cmr-black); }
-.cta-box p.hook-desc { margin: 0 0 16px; font-size: 14.5px; line-height: 1.5; color: var(--cmr-gray-dark); }
-
-.consent-row { margin: 16px 0; padding-top: 14px; border-top: 1px solid var(--cmr-border); }
-.consent-row label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13.5px; color: var(--cmr-gray-dark); line-height: 1.4; }
-.consent-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--cmr-red); flex-shrink: 0; }
-
-.turnstile-wrap { min-height: 65px; margin: 12px 0; }
-.msg-alert { padding: 12px; margin-bottom: 16px; border-radius: 4px; font-weight: 500; font-size: 14.5px; display: none; }
-.msg-alert.success { background: var(--cmr-green-light); color: var(--cmr-green); border: 1px solid var(--cmr-green); display: block; }
-.msg-alert.error { background: #FFEBEE; color: var(--cmr-red-dark); border: 1px solid var(--cmr-red); display: block; }
-
-.btn-primary {
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background: var(--cmr-red);
-  cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(211, 17, 69, 0.25);
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: var(--cmr-red-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(211, 17, 69, 0.3);
-}
-
-.btn-primary:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
-
-.social-proof {
-  margin-top: 16px;
-  text-align: center;
-  font-size: 12.5px;
-  color: var(--cmr-gray-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.social-proof span { display: flex; align-items: center; gap: 4px; }
-.social-proof svg { width: 16px; height: 16px; fill: var(--cmr-green); }
-
-/* ─────────────────────────────────────────
- 6. FULL REPORT & FAQ ACCORDION
-───────────────────────────────────────── */
-#fullReportSection { display: none; margin-top: 20px; }
-#fullReportSection.visible { display: block; }
-
-.report-card { margin-bottom: 14px; padding: 16px; border: 1px solid var(--cmr-border); border-radius: 4px; background: #fff; }
-.report-card h3 { margin: 0 0 10px; font-family: "Montserrat", sans-serif; font-size: 15px; color: var(--cmr-black); }
-
-.status-badge { display: inline-block; margin-bottom: 8px; padding: 4px 10px; border-radius: 3px; font-family: "Montserrat", sans-serif; font-size: 12px; font-weight: 700; }
-.status-exempt { color: #176b2c; background: #E8F5E9; }
-.status-taxable { color: #a20e34; background: #FFEBEE; }
-
-.info-table { width: 100%; margin: 8px 0; border-collapse: collapse; font-size: 14px; }
-.info-table th, .info-table td { padding: 8px 10px; border: 1px solid var(--cmr-border); text-align: left; vertical-align: top; }
-.info-table th { width: 60%; background: var(--cmr-gray-light); font-weight: 600; }
-.info-table .important th, .info-table .important td { color: var(--cmr-red); font-family: "Montserrat", sans-serif; font-weight: 700; }
-
-.faq-item {
-  border: 1px solid var(--cmr-border);
-  border-radius: 4px;
-  margin-bottom: 8px;
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 12px 16px;
-  background: var(--cmr-gray-light);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 14.5px;
-  color: var(--cmr-black);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-}
-
-.faq-question::after {
-  content: "▾";
-  font-size: 16px;
-  color: var(--cmr-gray-dark);
-  transition: transform 0.2s;
-}
-
-.faq-item.active .faq-question::after {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  display: none;
-  padding: 12px 16px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--cmr-gray-dark);
-  background: #fff;
-  border-top: 1px solid var(--cmr-border);
-}
-
-.faq-item.active .faq-answer {
-  display: block !important;
-}
-
-/* ─────────────────────────────────────────
- 7. PATA
-───────────────────────────────────────── */
-.cmr-footer {
-  background: var(--cmr-gray-light);
-  padding: 24px 16px;
-  margin-top: 40px;
-  font-size: 13px;
-  color: var(--cmr-gray-dark);
-  text-align: center;
-  border-top: 3px solid var(--cmr-red);
-  border-radius: 0 0 4px 4px;
-}
-
-.cmr-footer p { margin: 4px 0; }
-.cmr-footer a { color: var(--cmr-red); text-decoration: none; }
-.cmr-footer a:hover { text-decoration: underline; }
-
-.footer-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
-.footer-btns button { min-height: 44px; padding: 10px 24px; border: 2px solid var(--cmr-red); border-radius: 3px; cursor: pointer; font-family: "Montserrat", sans-serif; font-size: 15px; font-weight: 600; }
-.btn-reset { color: var(--cmr-red); background: #fff; }
-
-@media screen and (max-width:480px) {
-  body { padding: 8px 10px 36px; font-size: 15px; }
-  .hero-box { padding: 16px 14px; }
-  .hero-box h1 { font-size: 20px; }
-  .frow { flex-direction: column; gap: 4px; }
-  .frow label { padding-top: 0; min-width: auto; font-size: 14px; }
-  .fw, .fhalf { width: 100%; min-width: 0; }
-  .teaser-value { font-size: 22px; }
-  .footer-btns { flex-direction: column; align-items: stretch; }
-  .footer-btns button { width: 100%; }
-}
+:root{--red:#D31145;--red-d:#A80D33;--ink:#1A1A1A;--g:#4A4A4A;--gl:#F4F4F4;--bd:#E0E0E0;--ok:#2E7D32;--okl:rgba(46,125,50,.09);--warn:#E65100;--warnl:#FFF3E0;--bad:#B71C1C;--badl:#FFEBEE}
+*,*::before,*::after{box-sizing:border-box}
+html{background:#ececec}
+body{margin:0 auto;max-width:640px;padding:12px 16px 40px;background:#fff;color:var(--ink);font:17px/1.5 Roboto,Arial,sans-serif}
+button,input,select{font:inherit}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:3px solid var(--red)}
+header img{width:96px;height:auto;display:block}
+header span{font-size:13px;color:var(--g);text-align:right}
+h1{font:700 26px/1.2 Montserrat,sans-serif;margin:22px 0 8px}
+.lead{color:var(--g);margin:0 0 18px}
+.card{border:1px solid var(--bd);border-top:4px solid var(--red);border-radius:6px;padding:18px 16px;background:linear-gradient(#fafafa,#fff)}
+.q{margin:0 0 18px;border:0;padding:0}
+.q legend{font:600 16px/1.35 Montserrat,sans-serif;padding:0;margin-bottom:8px}
+.q small{display:block;color:var(--g);font:400 13.5px/1.4 Roboto,sans-serif;margin-top:2px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{position:relative;flex:1 1 120px}
+.pill input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pill span{display:block;text-align:center;padding:12px 10px;border:1.5px solid var(--bd);border-radius:6px;background:#fff;font-weight:500;min-height:48px}
+.pill input:checked+span{border-color:var(--red);background:rgba(211,17,69,.07);color:var(--red-d);font-weight:700}
+.pill input:focus-visible+span{outline:3px solid rgba(211,17,69,.35)}
+.field{width:100%;min-height:48px;padding:10px 12px;border:1.5px solid var(--bd);border-radius:6px;background:#fff;color:var(--ink)}
+.field:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(211,17,69,.12)}
+label.l{display:block;font-weight:500;margin:0 0 4px;font-size:15px}
+.row{margin-bottom:14px}
+.btn{width:100%;min-height:52px;border:0;border-radius:6px;background:var(--red);color:#fff;font:700 17px Montserrat,sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(211,17,69,.25)}
+.btn:hover:not(:disabled){background:var(--red-d)}
+.btn:disabled{background:#bbb;box-shadow:none;cursor:wait}
+.err{display:none;margin:10px 0 0;padding:10px 12px;border-radius:6px;background:var(--badl);color:var(--bad);font-size:15px}
+.err.on{display:block}
+#result,#formBox,#thanks{display:none;margin-top:18px}
+#result.on,#formBox.on,#thanks.on{display:block}
+.plan{border-radius:6px;padding:16px;border-left:6px solid var(--ok);background:var(--okl)}
+.plan h2{margin:0 0 6px;font:700 20px/1.25 Montserrat,sans-serif;color:var(--ok)}
+.plan p{margin:0 0 10px}
+.plan ol{margin:0 0 10px;padding-left:22px}
+.plan li{margin-bottom:5px}
+.plan .risk{margin:0;padding:10px 12px;border-radius:4px;background:var(--warnl);border-left:4px solid var(--warn);font-size:15px}
+.extra{margin:12px 0 0;padding-left:20px;color:var(--g);font-size:15px}
+.extra li{margin-bottom:4px}
+.trust{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none;font-size:13.5px;font-weight:500}
+.trust li{border:1px solid var(--bd);border-radius:4px;padding:5px 9px;background:#fff}
+#formBox h2{font:700 20px/1.25 Montserrat,sans-serif;margin:0 0 8px}
+.calm{background:var(--gl);border-left:4px solid var(--red);border-radius:4px;padding:10px 12px;font-size:15px;margin:0 0 14px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--g);line-height:1.4;margin:6px 0 14px}
+.consent input{width:20px;height:20px;margin-top:1px;accent-color:var(--red);flex-shrink:0}
+.consent a{color:var(--red)}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+#thanks ul{padding-left:20px}
+.cb{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;padding:12px 16px;background:#fff;border-top:2px solid var(--red);box-shadow:0 -4px 16px rgba(0,0,0,.12);font-size:13.5px}
+.cb.on{display:flex}
+.cb button{min-height:40px;padding:8px 16px;border-radius:4px;border:1.5px solid var(--red);background:#fff;color:var(--red);font-weight:700;cursor:pointer}
+.cb button.y{background:var(--red);color:#fff}
+footer{margin-top:32px;padding:18px 8px;border-top:3px solid var(--red);background:var(--gl);text-align:center;font-size:12.5px;color:var(--g)}
+footer p{margin:3px 0}footer a{color:var(--red)}
+@media(max-width:480px){h1{font-size:22px}body{font-size:16px}}
+@media(prefers-reduced-motion:no-preference){.plan{animation:in .3s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
 </style>
 </head>
-
 <body>
-<form id="cmrForm" novalidate onsubmit="return false;">
 
-  <!-- HLAVIČKA ČMR (Trojitý záložní systém pro logo) -->
-  <header class="cmr-header">
-    <div class="cmr-logo-wrap">
-      <img id="cmrLogoImg" src="logo CMR.jpg" alt="Českomoravská realitní, a.s." onerror="if(this.src.indexOf('cmr.cz')===-1){this.src='https://www.cmr.cz/poskireal/poskireal-v26.2/0/frontend/CID/cmr/easy-v4/images/logo.png';}else{this.style.display='none';document.getElementById('cmrLogoSvg').style.display='block';}">
-      <svg id="cmrLogoSvg" style="display:none; width:100%; height:auto;" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="120" rx="6" fill="#D31145"/>
-        <text x="200" y="55" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="36" fill="#fff">CMR</text>
-        <text x="200" y="85" text-anchor="middle" font-family="Roboto" font-size="13" fill="rgba(255,255,255,.92)">Českomoravská realitní, a.s.</text>
-      </svg>
+<header>
+  <img src="logo CMR.jpg" alt="Českomoravská realitní, a.s." onerror="this.onerror=null;this.src='https://www.cmr.cz/poskireal/poskireal-v26.2/0/frontend/CID/cmr/easy-v4/images/logo.png'">
+  <span>Českomoravská realitní, a.s.<br>od roku 2004</span>
+</header>
+
+<h1>Prodat nejdřív, nebo koupit nejdřív?</h1>
+<p class="lead">Odpovězte na čtyři otázky a dostanete doporučené pořadí výměny bydlení, abyste nezůstali bez bydlení ani bez peněz. Nemusíte znát žádné ceny.</p>
+
+<section class="card" aria-label="Test výměny bydlení">
+  <fieldset class="q">
+    <legend>1. Kam se stěhujete?</legend>
+    <div class="pills">
+      <label class="pill"><input type="radio" name="dir" value="větší"><span>Do většího</span></label>
+      <label class="pill"><input type="radio" name="dir" value="menší"><span>Do menšího</span></label>
     </div>
-    <div class="cmr-header-title">
-      <h1>BEZPEČNÁ VÝMĚNA BYDLENÍ</h1>
-      <div class="subtitle">Kalkulačka čistého výnosu a harmonogram prodeje a koupě</div>
-      <div class="document-id">ČMR/PROPERTY-EXCHANGE/v1.2</div>
+  </fieldset>
+  <fieldset class="q">
+    <legend>2. Máte už vybrané nové bydlení?</legend>
+    <div class="pills">
+      <label class="pill"><input type="radio" name="found" value="ano"><span>Ano, mám vybráno</span></label>
+      <label class="pill"><input type="radio" name="found" value="hledam"><span>Hledám</span></label>
+      <label class="pill"><input type="radio" name="found" value="ne"><span>Ještě nehledám</span></label>
     </div>
-  </header>
-
-  <!-- HERO SEKCE -->
-  <div class="hero-box">
-    <h1>Chcete vyměnit své bydlení, ale bojíte se, že zůstanete viset ve vzduchu?</h1>
-    <h2>Prodej stávající nemovitosti a nákup nové navážeme na jediný den. Bez dvojího stěhování, bez meziskladu nábytku a bez procesních komplikací.</h2>
-    
-    <div class="trust-badges">
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
-        22 let na trhu (od r. 2004)
-      </div>
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
-        2 471+ vyřešených případů
-      </div>
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
-        Pojištění garance min. 1 750 000 Kč
-      </div>
+  </fieldset>
+  <fieldset class="q">
+    <legend>3. Zvládli byste koupit nové bydlení dřív, než prodáte stávající?<small>Z úspor, hypotéky nebo pomoci rodiny.</small></legend>
+    <div class="pills">
+      <label class="pill"><input type="radio" name="funds" value="ano"><span>Ano</span></label>
+      <label class="pill"><input type="radio" name="funds" value="cast"><span>Jen částečně</span></label>
+      <label class="pill"><input type="radio" name="funds" value="ne"><span>Ne</span></label>
     </div>
-  </div>
-
-  <!-- SEKCE: PROBLEM & EMPATHY -->
-  <article>
-    <div class="art-header"><span class="art-num">1</span><h2>Dva obchody najednou. Jak z toho neudělat komplikaci?</h2></div>
-    <div class="art-body">
-      <p>Prodávat byt a současně kupovat nový domov je pro většinu lidí velká majetková operace. Nejčastěji řešíte tři zásadní otázky:</p>
-      
-      <div class="warning-box">
-        <strong>1. Co když prodám rychle, ale nebudu mít ještě vybrané nové bydlení?</strong><br>
-        Hrozí vám drahý provizorní nájem, dvojí stěhování a zbytečné náklady na mezisklad nábytku.<br><br>
-        <strong>2. Co když složím rezervaci na nový byt, ale stávající se nepodaří včas prodat?</strong><br>
-        Hrozí ztráta rezervační zálohy a smluvní pokuty za prodlení.<br><br>
-        <strong>3. Kolik peněz mi po zaplacení srážek a poplatků reálně zůstane na nákup?</strong><br>
-        Bez přesné kalkulace čisté částky riskujete, že vám bude v rozpočtu pro nový domov chybět několik stovek tisíc korun.
-      </div>
-      
-      <p><strong>V Českomoravské realitní tyto procesy pevně svazujeme do jednoho celku.</strong> Smluvní dokumentaci, úschovy i předání klíčů koordinujeme tak, abyste plynule přešli ze starého domova do nového.</p>
+  </fieldset>
+  <fieldset class="q">
+    <legend>4. Je na stávající nemovitosti hypotéka nebo zástava?</legend>
+    <div class="pills">
+      <label class="pill"><input type="radio" name="mort" value="ano"><span>Ano</span></label>
+      <label class="pill"><input type="radio" name="mort" value="ne"><span>Ne</span></label>
     </div>
-  </article>
+  </fieldset>
+  <button type="button" class="btn" id="btnCalc">Zobrazit doporučené pořadí</button>
+  <div class="err" id="calcErr" role="alert"></div>
+</section>
 
-  <!-- INTERAKTIVNÍ KALKULAČKA -->
-  <article id="calculatorWidget">
-    <div class="art-header"><span class="art-num">2</span><h2>Orientační kalkulace čistého výnosu</h2></div>
-    <div class="art-body">
-      
-      <div class="frow">
-        <label for="propertyType">Typ stávající nemovitosti <span class="required">*</span></label>
-        <div class="fw">
-          <select id="propertyType" class="field">
-            <option value="">Vyberte typ</option>
-            <option value="Byt">Byt</option>
-            <option value="Rodinný dům">Rodinný dům</option>
-            <option value="Chata / Chalupa">Chata / Chalupa</option>
-            <option value="Pozemek">Pozemek</option>
-            <option value="Komerční objekt">Komerční objekt</option>
-          </select>
-        </div>
-      </div>
+<section id="result" aria-live="polite">
+  <div class="plan" id="plan"></div>
+  <ul class="extra" id="extra"></ul>
+</section>
 
-      <div class="frow">
-        <label for="region">Lokalita (Město / Obec / PSČ) <span class="required">*</span></label>
-        <div class="fw">
-          <input id="region" type="text" class="field" placeholder="Např. Praha 4, Benešov, Plzeň...">
-        </div>
-      </div>
+<section id="formBox" class="card" aria-label="Plán výměny">
+  <h2>Nechte si plán výměny propracovat zdarma</h2>
+  <p style="margin:0 0 12px;color:var(--g)">Specialista ČMR s vámi projde vaši konkrétní situaci, sestaví časový harmonogram prodeje a koupě a upozorní na rizika, která s ním souvisejí.</p>
+  <ul class="trust">
+    <li>Pojištění min. 1 750 000 Kč</li>
+    <li>Peníze v advokátní úschově</li>
+    <li>22 let na trhu</li>
+  </ul>
+  <!-- Sem vložte fotku a jméno konkrétního specialisty (výrazně zvyšuje důvěru). -->
+  <p class="calm"><strong>Zavoláme vám jednou, bez prodejního tlaku.</strong> Zavolá specialista pro vaši lokalitu, obvykle do 24 hodin v pracovní dny.</p>
 
-      <div class="frow">
-        <label for="area">Užitná plocha (m²) <span class="required">*</span></label>
-        <div class="fhalf">
-          <input id="area" type="number" min="0" step="1" class="field" placeholder="m²">
-        </div>
-      </div>
+  <div class="row"><label class="l" for="cName">Jméno a příjmení</label><input id="cName" class="field" type="text" autocomplete="name"></div>
+  <div class="row"><label class="l" for="cPhone">Telefon</label><input id="cPhone" class="field" type="tel" inputmode="tel" autocomplete="tel" placeholder="+420 …"></div>
+  <div class="row"><label class="l" for="cTime">Kdy se vám hodí hovor?</label>
+    <select id="cTime" class="field"><option value="kdykoliv">Kdykoliv</option><option value="dopoledne">Dopoledne</option><option value="odpoledne">Odpoledne</option><option value="vecer">Večer</option></select></div>
+  <div class="row"><label class="l" for="cRegion">Kde se stávající nemovitost nachází? <span style="color:var(--g);font-weight:400">(nepovinné)</span></label><input id="cRegion" class="field" type="text" autocomplete="address-level2" placeholder="Např. Praha 4, Benešov"></div>
+  <div class="row"><label class="l" for="cNote">Kde hledáte nové bydlení? <span style="color:var(--g);font-weight:400">(nepovinné)</span></label><input id="cNote" class="field" type="text" placeholder="Např. dům s zahradou u Prahy"></div>
+  <div class="row"><label class="l" for="cEmail">E-mail <span style="color:var(--g);font-weight:400">(nepovinné)</span></label><input id="cEmail" class="field" type="email" autocomplete="email"></div>
+  <div class="hp" aria-hidden="true"><input id="cWeb" type="text" tabindex="-1" autocomplete="off"></div>
 
-      <div class="frow">
-        <label for="salePrice">Předpokládaná prodejní cena <span class="required">*</span></label>
-        <div class="fw">
-          <input id="salePrice" type="number" min="0" step="1" class="field" placeholder="Kč">
-          <div class="help-text">Váš orientační odhad prodejní ceny.</div>
-        </div>
-      </div>
+  <label class="consent"><input id="cConsent" type="checkbox"><span>Souhlasím, že mě specialista Českomoravské realitní, a.s. kontaktuje ohledně plánu výměny bydlení. <a href="https://www.cmr.cz/informace-o-zpracovani-osobnich-udaju/" target="_blank" rel="noopener">Zásady zpracování údajů</a></span></label>
+  <div id="ts"></div>
+  <div class="err" id="formErr" role="alert"></div>
+  <button type="button" class="btn" id="btnSend" style="margin-top:10px">Objednat zdarma plán výměny</button>
+</section>
 
-      <div class="frow">
-        <label for="purchasePrice">Původní pořizovací cena / dědictví <span class="required">*</span></label>
-        <div class="fw">
-          <input id="purchasePrice" type="number" min="0" step="1" class="field" placeholder="Kč">
-          <div class="help-text">Za kolik jste nemovitost koupili (nebo hodnota určená v dědickém řízení).</div>
-        </div>
-      </div>
+<section id="thanks" class="card" role="status">
+  <h2 style="font:700 20px Montserrat,sans-serif;margin:0 0 8px;color:var(--ok)">Děkujeme, žádost je odeslaná</h2>
+  <p>Specialista ČMR vám zavolá. Mezitím si připravte:</p>
+  <ul>
+    <li>aktuální výpis z katastru nemovitostí (list vlastnictví) stávající nemovitosti</li>
+    <li>údaje o hypotéce nebo zástavě (banka, zbývající dluh), pokud na nemovitosti vázne</li>
+    <li>průkaz energetické náročnosti budovy (PENB), pokud ho máte</li>
+    <li>odkaz nebo adresu nového bydlení, pokud už jste si nějaké vybrali</li>
+  </ul>
+</section>
 
-      <div class="frow">
-        <label for="acquisitionYear">Orientační rok nabytí <span class="required">*</span></label>
-        <div class="fhalf">
-          <input id="acquisitionYear" type="number" min="1900" max="2026" step="1" class="field" placeholder="Např. 2018">
-          <div class="help-text">Rozhodující pro ověření splnění časových podmínek osvobození.</div>
-        </div>
-      </div>
+<footer>
+  <p><strong>Českomoravská realitní, a.s.</strong> | IČO: 27127966 | Hlavní 1151/4, 141 00 Praha 4</p>
+  <p><a href="mailto:info@cmr.cz">info@cmr.cz</a> | <a href="https://www.cmr.cz/informace-o-zpracovani-osobnich-udaju/">Ochrana osobních údajů</a></p>
+  <p>Doporučení je orientační a nenahrazuje individuální právní ani daňové poradenství.</p>
+</footer>
 
-      <div class="frow">
-        <label>Cíl výměny bydlení <span class="required">*</span></label>
-        <div class="fw chk-group">
-          <label><input type="radio" name="exchangeGoal" value="přechod do většího" checked> Přecházím do většího (např. rodina)</label>
-          <label><input type="radio" name="exchangeGoal" value="přechod do menšího"> Přecházím do menšího / úspornějšího</label>
-        </div>
-      </div>
-
-      <div style="margin-top:20px;">
-        <button type="button" class="btn-primary" id="btnCalculateTeaser">Spočítat orientační čistý výnos</button>
-      </div>
-
-    </div>
-  </article>
-
-  <!-- DYNAMICKÝ TEASER BOX -->
-  <div class="teaser-box" id="teaserBox">
-    <h3>Váš orientační čistý výnos z prodeje:</h3>
-    <div class="teaser-value" id="teaserValueResult">-- Kč</div>
-    <div class="teaser-explanation" id="teaserExplanation"></div>
-
-    <div class="risk-briefing-box">
-      <h4>⚠️ Pozor: Tato částka platí v ideálním teoretickém případě</h4>
-      <p style="margin:0 0 6px; font-size:13.5px; color:var(--cmr-black);">Reálný prodej přináší řadu skrytých faktorů, které mohou vaši výslednou částku zásadně ovlivnit:</p>
-      <ul>
-        <li><strong>Doložení nákladů na rekonstrukce:</strong> Správně doložené opravy mohou zákonnou srážku zredukovat na nulu.</li>
-        <li><strong>Test trvalého bydliště:</strong> Při splnění 2leté podmínky získáváte 100% osvobození bez ohledu na délku vlastnictví.</li>
-        <li><strong>Použití peněz na vlastní bytovou potřebu:</strong> Lze uplatnit plné osvobození při včasném oznámení.</li>
-        <li><strong>Dědictví v přímé linii:</strong> Doba vlastnictví zůstavitele (rodičů/prarodičů) se vám započítává.</li>
-        <li><strong>Vypořádání spoluvlastnictví a zástavních práv:</strong> Právní jistota převodu bez finančních blokací.</li>
-      </ul>
-    </div>
-
-    <div class="step2-promise-box">
-      📋 <strong>Co získáte po zanechání kontaktu níže:</strong><br>
-      1. <strong>Okamžitý přehled a checklist podkladů</strong> přímo na obrazovce pro bezpečný prodej.<br>
-      2. <strong>Osobní spojení se specialistou ČMR</strong> pro vaši lokalitu do 24 hodin, který s vámi projde detaily a sestaví přesný harmonogram stěhování zcela nezávazně v rámci námi poskytovaného servisu.
-    </div>
-  </div>
-
-  <!-- LEAD FORMULÁŘ & CTA -->
-  <div class="cta-box" id="leadSection">
-    <h3>Získejte nezávazný harmonogram výměny a kompletní posouzení prodeje</h3>
-    <p class="hook-desc">Při prodeji nemovitosti se nejčastěji chybuje v nesprávném odhadu ceny nebo přehlédnutí zákonných nároků. Po odeslání se vám na obrazovce ihned zobrazí přehledný checklist a náš specialista ČMR se s vámi do 24 hodin spojí k ověření konkrétních dat pro zpracování kompletní analýzy prodeje s tržním odhadem – zcela nezávazně v rámci námi poskytovaného servisu.</p>
-
-    <div id="formMsg" class="msg-alert"></div>
-
-    <div class="frow">
-      <label for="clientName">Jméno a příjmení <span class="required">*</span></label>
-      <div class="fw"><input id="clientName" type="text" class="field" placeholder="Jan Novák"></div>
-    </div>
-
-    <div class="frow">
-      <label for="clientPhone">Telefonní číslo <span class="required">*</span></label>
-      <div class="fw"><input id="clientPhone" type="tel" class="field" placeholder="+420 …" autocomplete="tel"></div>
-    </div>
-
-    <div class="frow">
-      <label for="clientEmail">E-mail <span class="required">*</span></label>
-      <div class="fw"><input id="clientEmail" type="email" class="field" placeholder="jan.novak@email.cz" autocomplete="email"></div>
-    </div>
-
-    <div class="frow">
-      <label for="clientNote">Poznámka / Kde hledáte nové bydlení?</label>
-      <div class="fw">
-        <textarea id="clientNote" class="field" rows="2" placeholder="Např. Hledáme dům se zahradou v okolí Prahy východ..."></textarea>
-      </div>
-    </div>
-
-    <div class="consent-row">
-      <label>
-        <input id="contactConsent" type="checkbox" value="TRUE" checked>
-        <span>Souhlasím s kontaktováním specialistou Českomoravské realitní, a.s. pro předání nezávazného harmonogramu výměny bydlení a tržního odhadu v souladu s GDPR.</span>
-      </label>
-    </div>
-
-    <div class="turnstile-wrap" id="turnstileWrap">
-      <div id="turnstileWidget"></div>
-      <div class="help-text" id="turnstileMessage" style="color:var(--cmr-gray-dark);">Načítám bezpečnostní ověření...</div>
-    </div>
-
-    <button type="button" class="btn-primary" id="btnSubmitLead">Odemknout přehled a harmonogram</button>
-
-    <div class="social-proof">
-      <span><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg> 22 let tradice a jistoty</span>
-      <span><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg> 2 471+ spokojených klientů</span>
-      <span><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg> Bez vstupních poplatků</span>
-    </div>
-  </div>
-
-  <!-- MECHANISMUS 3 KROKŮ -->
-  <article style="margin-top:24px;">
-    <div class="art-header"><span class="art-num">3</span><h2>3 kroky k plynulému přechodu do nového domova</h2></div>
-    <div class="art-body">
-      
-      <p><strong>Krok 1: Přesný výpočet čistého rozpočtu</strong><br>
-      Využijeme naši Kalkulačku čistého výnosu ČMR. Započítáme pořizovací cenu, prokazatelné rekonstrukce i osvobození od zákonných srážek při investici do vlastní bytové potřeby dle § 4 ZDP. Přesně víte, jaký rozpočet máte pro nákup.</p>
-
-      <p><strong>Krok 2: Synchronizace smluv a úschov</strong><br>
-      Sestavíme časový harmonogram. Rezervační smlouvy, kupní smlouvy i advokátní úschovy nastavíme s časovými pojistkami tak, aby uvolnění financí z prodeje přímo krylo úhradu kupní ceny nové nemovitosti.</p>
-
-      <p><strong>Krok 3: Předání klíčů v jediný den</strong><br>
-      Smluvně ošetříme termíny vyklizení a předání. Z původního bytu se stěhujete rovnou do nového — bez provizorních podnájmů a bez meziskladů.</p>
-
-    </div>
-  </article>
-
-  <!-- GARANCE ČMR -->
-  <article>
-    <div class="art-header"><span class="art-num">4</span><h2>Proč svěřit výměnu bydlení specialistům z ČMR?</h2></div>
-    <div class="art-body">
-      <div class="success-box">
-        • <strong>Kompletní tým pod jednou střechou:</strong> Nemusíte shánět vlastní právníky, odhadce ani konzultanty. Náš tým garantuje Kompletní servis zahrnutý v naší odměně při úspěšném dokončení prodeje.<br><br>
-        • <strong>Jistota vázaných účtů:</strong> Veškeré prostředky jsou po dobu transakce bezpečně uloženy na vázaných účtech advokátní či bankovní úschovy.<br><br>
-        • <strong>Pojištění profesní odpovědnosti:</strong> Jsme pojištěni s limitem plnění minimálně 1 750 000 Kč na každou pojistnou událost dle zákona č. 39/2020 Sb.
-      </div>
-    </div>
-  </article>
-
-  <!-- FAQ SEKCE -->
-  <article>
-    <div class="art-header"><span class="art-num">5</span><h2>Často kladené otázky (FAQ)</h2></div>
-    <div class="art-body">
-      
-      <div class="faq-item">
-        <div class="faq-question">Jak je ošetřeno, abych nezůstal/a bez bydlení, když se prodej stávajícího bytu zdrží?</div>
-        <div class="faq-answer">V kupní smlouvě i rezervační smlouvě na novou nemovitost nastavujeme provázané rozvazovací podmínky a dostatečnou časovou rezervu pro uvolnění prostředků. Pokud by kupující neuhradil kupní cenu včas, nezačne běžet lhůta pro předání vašeho původního bytu.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Týká se mě zákonná srážka z prodeje, když výnos použiji na koupí nového domu?</div>
-        <div class="faq-answer">Pokud výnos z prodeje nemovitosti použijete na obstarání vlastní bytové potřeby do 1 roku od obdržení peněz (nebo 1 rok předem), je tento příjem osvobozen dle § 4 zákona o daních z příjmů. Přesné podmínky s vámi projde náš specialista v rámci předprodejního servisu.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Kolik mě stojí zpracování harmonogramu a posouzení prodeje?</div>
-        <div class="faq-answer">Příprava harmonogramu výměny, výpočet čistého výnosu i zpracování tržního odhadu jsou v ČMR prováděny nezávazně a bez vstupních poplatků. Veškeré náklady našich specialistů pokrývá až naše odměna při úspěšném dokončení celého obchodu.</div>
-      </div>
-
-    </div>
-  </article>
-
-  <!-- FULL REPORT (ODEMČENÝ PO ODESLÁNÍ) -->
-  <article id="fullReportSection">
-    <div class="art-header"><span class="art-num">Výstup</span><h2>Detailní kalkulace a přehled k prodeji (Odemčeno)</h2></div>
-    <div class="art-body" id="fullReportContent"></div>
-  </article>
-
-  <!-- PATA -->
-  <footer class="cmr-footer">
-    <p><strong>Českomoravská realitní, a.s.</strong> | IČO: 27127966 | Sídlo: Hlavní 1151/4, 141 00 Praha 4</p>
-    <p>Společnost zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl B, vložka 9179.</p>
-    <p>E-mail: <a href="mailto:info@cmr.cz">info@cmr.cz</a> | Web: <a href="https://www.cmr.cz" target="_blank">www.cmr.cz</a></p>
-    <p style="margin-top:10px; font-size:11.5px; line-height:1.45; color:#666;">
-      <em>Disclaimer: Veškeré informace a kalkulace uvedené na této stránce mají informativní a orientační charakter a nenahrazují individuální právní ani daňové poradenství. Přesné posouzení připravují specialisté ČMR na míru konkrétnímu případu na základě doplňujících Podkladů k odhadu ceny nemovitosti.</em>
-    </p>
-  </footer>
-
-  <div class="footer-btns">
-    <button type="button" class="btn-reset" id="btnReset">🔄 Reset formuláře</button>
-  </div>
-
-</form>
+<div class="cb" id="cb" role="dialog" aria-label="Cookies">
+  <span>Používáme cookies pro měření reklamy. Souhlasíte?</span>
+  <button type="button" class="y" id="cbY">Souhlasím</button><button type="button" id="cbN">Odmítnout</button>
+</div>
 
 <script>
 "use strict";
+/* ===== KONFIGURACE ===== */
+var CFG={
+  api:"https://cmr-leady-vymena.ceskomoravskarealitni.workers.dev",
+  turnstileKey:"0x4AAAAAAFDv1HI7pKh14sYW", /* ověřte, že je to klíč widgetu pro tuto doménu */
+  adsLeadLabel:"",   /* Google Ads: štítek konverze (AW-1038434503/štítek) */
+  sklikId:"",        /* Sklik: ID konverze */
+  source:"Vymena_Scenar_V2"
+};
+var $=function(s){return document.querySelector(s)};
+var consent=null,started=false,tsToken="",sent=false,ans={};
 
-// KONFIGURACE CLOUDFLARE WORKERU A TURNSTILE
-// Vložte váš veřejný Site Key z Turnstile (získaný z okna Edit Widget pod Widget Keys):
-const TURNSTILE_SITE_KEY = "VLOZTE_SEM_VAS_TURNSTILE_SITE_KEY"; 
-const LEAD_API_URL = "https://cmr-leady-vymena.ceskomoravskarealitni.workers.dev";
-
-let turnstileToken = "";
-let turnstileWidgetId = null;
-
-document.addEventListener("DOMContentLoaded", function() {
-
-  // 1. TURNSTILE OCHRANA BEZPEČNOSTI
-  function initTurnstile() {
-    const msg = document.getElementById("turnstileMessage");
-    if (!window.turnstile || TURNSTILE_SITE_KEY === "0x4AAAAAAFDv1HI7pKh14sYW") {
-      if (msg) msg.textContent = "Bezpečnostní ověření bylo připraveno.";
-      turnstileToken = "bypass_webview"; 
-      return;
-    }
-
-    try {
-      turnstileWidgetId = window.turnstile.render("#turnstileWidget", {
-        sitekey: TURNSTILE_SITE_KEY,
-        theme: "light",
-        language: "cs",
-        callback: function(token) {
-          turnstileToken = token;
-          if (msg) msg.textContent = "Bezpečnostní ověření proběhlo v pořádku.";
-        },
-        "error-callback": function() {
-          turnstileToken = "error_fallback";
-          if (msg) msg.textContent = "Ověření dokončeno.";
-        }
-      });
-    } catch(e) {
-      turnstileToken = "error_fallback";
-    }
+/* ===== SOUHLAS A MĚŘENÍ ===== */
+try{consent=localStorage.getItem("cmr_consent")}catch(e){}
+function applyConsent(v){
+  consent=v;try{localStorage.setItem("cmr_consent",v)}catch(e){}
+  if(v==="granted"){
+    gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
+    fbq('consent','grant');
   }
+  $("#cb").classList.remove("on");
+}
+if(consent==="granted")applyConsent("granted");else if(!consent)$("#cb").classList.add("on");
+$("#cbY").onclick=function(){applyConsent("granted")};
+$("#cbN").onclick=function(){applyConsent("denied")};
 
-  setTimeout(initTurnstile, 500);
+function ev(name,p){
+  try{gtag('event',name,p||{})}catch(e){}
+  try{fbq('trackCustom',name,p||{})}catch(e){}
+}
+function utm(){
+  var q=new URLSearchParams(location.search),o={};
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid"].forEach(function(k){o[k]=q.get(k)||""});
+  var c=document.cookie,m;
+  o.fbp=(m=c.match(/(?:^|; )_fbp=([^;]+)/))?m[1]:"";
+  o.fbc=(m=c.match(/(?:^|; )_fbc=([^;]+)/))?m[1]:"";
+  return o;
+}
+function show(el,on){el.classList[on?"add":"remove"]("on")}
+function val(n){return(document.querySelector("input[name="+n+"]:checked")||{}).value}
 
-  // 2. FAQ ACCORDION
-  var faqQuestions = document.querySelectorAll(".faq-question");
-  faqQuestions.forEach(function(question) {
-    question.addEventListener("click", function() {
-      var item = this.closest(".faq-item");
-      if (item) {
-        item.classList.toggle("active");
-      }
-    });
-  });
-
-  // Pomocná funkce pro měnu
-  function formatCurrency(val) {
-    return new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK", maximumFractionDigits: 0 }).format(Math.round(val || 0));
-  }
-
-  // 3. KALKULAČKA ČISTÉHO VÝNOSU
-  var btnCalc = document.getElementById("btnCalculateTeaser");
-  if (btnCalc) {
-    btnCalc.addEventListener("click", function() {
-      var propType = document.getElementById("propertyType").value;
-      var region = document.getElementById("region").value.trim();
-      var area = parseFloat(document.getElementById("area").value) || 0;
-      var salePrice = parseFloat(document.getElementById("salePrice").value) || 0;
-      var purchasePrice = parseFloat(document.getElementById("purchasePrice").value) || 0;
-      var acqYear = parseInt(document.getElementById("acquisitionYear").value) || 2026;
-
-      if (!propType || !region || salePrice <= 0 || purchasePrice <= 0) {
-        alert("Prosím, vyplňte všechna povinná pole (Typ nemovitosti, Lokalita, Ceny a Rok nabytí).");
-        return;
-      }
-
-      var currentYear = 2026;
-      var yearsOwned = currentYear - acqYear;
-      var requiredYears = acqYear >= 2021 ? 10 : 5;
-      var estimatedDeduction = 0;
-      var taxStatus = "";
-      var badgeClass = "status-exempt";
-      var explanationText = "";
-
-      if (yearsOwned >= requiredYears) {
-        taxStatus = "Zákonné osvobození uplatněno (splněna časová podmínka vlastnictví nad " + requiredYears + " let).";
-        badgeClass = "status-exempt";
-        explanationText = "Částka tvoří 100 % vaší předpokládané prodejní ceny (" + formatCurrency(salePrice) + "), protože podle zadaného roku nabytí (" + acqYear + ") splňujete zákonnou časovou podmínku pro osvobození.";
-      } else {
-        var profit = Math.max(0, salePrice - purchasePrice);
-        estimatedDeduction = profit * 0.15; // Modelová srážka 15 % ze zisku
-        taxStatus = "Nesplněna časová podmínka vlastnictví (pod " + requiredYears + " let). Aplikována modelová srážka 15 % ze zisku.";
-        badgeClass = "status-taxable";
-        explanationText = "Částka vychází z prodejní ceny po odečtení modelové 15% srážky ze zisku (" + formatCurrency(profit) + "), protože podle zadaného roku nabytí (" + acqYear + ") ještě neuplynula zákonná časová lhůta vlastnictví.";
-      }
-
-      var netAmount = Math.min(salePrice, Math.max(0, salePrice - estimatedDeduction));
-
-      var teaserVal = document.getElementById("teaserValueResult");
-      if (teaserVal) {
-        teaserVal.textContent = formatCurrency(netAmount);
-      }
-
-      var teaserExp = document.getElementById("teaserExplanation");
-      if (teaserExp) {
-        teaserExp.textContent = explanationText;
-      }
-
-      var teaserBox = document.getElementById("teaserBox");
-      if (teaserBox) teaserBox.classList.add("visible");
-
-      var leadSection = document.getElementById("leadSection");
-      if (leadSection) leadSection.classList.add("visible");
-
-      window.currentCalcData = {
-        salePrice: salePrice,
-        purchasePrice: purchasePrice,
-        estimatedDeduction: estimatedDeduction,
-        netAmount: netAmount,
-        taxStatus: taxStatus,
-        badgeClass: badgeClass,
-        propType: propType,
-        region: region,
-        area: area,
-        goal: document.querySelector('input[name="exchangeGoal"]:checked') ? document.querySelector('input[name="exchangeGoal"]:checked').value : "přechod do většího"
-      };
-
-      teaserBox.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  }
-
-  // 4. LEAD FORMULÁŘ & ODESLÁNÍ DO CLOUDFLARE WORKERU / GOOGLE SHEETS
-  var btnSubmit = document.getElementById("btnSubmitLead");
-  if (btnSubmit) {
-    btnSubmit.addEventListener("click", function() {
-      var name = document.getElementById("clientName").value.trim();
-      var phone = document.getElementById("clientPhone").value.trim();
-      var email = document.getElementById("clientEmail").value.trim();
-      var consent = document.getElementById("contactConsent").checked;
-      var msgBox = document.getElementById("formMsg");
-
-      if (!name || !phone || !email) {
-        if (msgBox) {
-          msgBox.textContent = "Prosím, vyplňte Jméno, Telefon a E-mail.";
-          msgBox.className = "msg-alert error";
-          msgBox.style.display = "block";
-        }
-        return;
-      }
-
-      if (!consent) {
-        if (msgBox) {
-          msgBox.textContent = "Je nutné potvrdit souhlas se zpracováním údajů.";
-          msgBox.className = "msg-alert error";
-          msgBox.style.display = "block";
-        }
-        return;
-      }
-
-      var calcData = window.currentCalcData || {};
-      
-      // Příprava kompletního JSON balíčku pro Google Sheets
-      var payload = {
-        source: "Výměna bydlení LP",
-        name: name,
-        phone: phone,
-        email: email,
-        clientNote: document.getElementById("clientNote") ? document.getElementById("clientNote").value.trim() : "",
-        propType: calcData.propType || document.getElementById("propertyType").value,
-        region: calcData.region || document.getElementById("region").value.trim(),
-        area: calcData.area || document.getElementById("area").value,
-        salePrice: calcData.salePrice || document.getElementById("salePrice").value,
-        goal: calcData.goal || "",
-        turnstileToken: turnstileToken || "bypass_webview"
-      };
-
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = "Odemykám přehled...";
-
-      // ODESLÁNÍ DAT PŘES CLOUDFLARE WORKER DO GOOGLE SHEETS
-      fetch(LEAD_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      })
-      .then(function(response) { 
-        return response.json(); 
-      })
-      .then(function(data) {
-        if (typeof fbq === 'function') fbq('track', 'Lead');
-
-        if (msgBox) {
-          msgBox.textContent = "Děkujeme! Vaše žádost byla přijata. Níže se odemkl váš detailní rozpočet a harmonogram. Náš specialist pro vaši lokalitu vás bude kontaktovat.";
-          msgBox.className = "msg-alert success";
-          msgBox.style.display = "block";
-        }
-        btnSubmit.textContent = "Harmonogram a rozpočet odemčen";
-        renderFullReport();
-      })
-      .catch(function(error) {
-        console.error("Chyba při odesílání:", error);
-        if (msgBox) {
-          msgBox.textContent = "Odeslání se nezdařilo. Zkontrolujte připojení a zkuste to znovu.";
-          msgBox.className = "msg-alert error";
-          msgBox.style.display = "block";
-        }
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = "Odemknout přehled a harmonogram";
-      });
-    });
-  }
-
-  // 5. VYKRESLENÍ FULL REPORTU
-  function renderFullReport() {
-    var d = window.currentCalcData;
-    if (!d) return;
-
-    var html = '<section class="report-card">' +
-      '<h3>1. Indikovaný status posouzení prodeje</h3>' +
-      '<span class="status-badge ' + d.badgeClass + '">' + (d.badgeClass === "status-exempt" ? "OSVOBOZENO OD SRÁŽEK" : "PODLÉHÁ MODELOVÉ SRÁŽCE") + '</span>' +
-      '<div>' + d.taxStatus + '</div>' +
-      '</section>' +
-      '<section class="report-card">' +
-      '<h3>2. Finanční bilance pro nákup nového bydlení</h3>' +
-      '<table class="info-table"><tbody>' +
-      '<tr><th>Předpokládaná prodejní cena stávající nemovitosti</th><td>' + formatCurrency(d.salePrice) + '</td></tr>' +
-      '<tr><th>Původní pořizovací cena / dědictví</th><td>' + formatCurrency(d.purchasePrice) + '</td></tr>' +
-      '<tr><th>Orientační odpočet zákonných srážek (FO)</th><td>' + formatCurrency(d.estimatedDeduction) + '</td></tr>' +
-      '<tr class="important"><th>Orientační čistá částka pro nákup nového bydlení</th><td>' + formatCurrency(d.netAmount) + '</td></tr>' +
-      '</tbody></table>' +
-      '<div class="help-text">Poznámka: Prokazatelné náklady na rekonstrukci, právní servis a odměnu RK snižují případný základ pro výpočet srážky.</div>' +
-      '</section>' +
-      '<section class="report-card">' +
-      '<h3>3. Doporučený harmonogram řetězového obchodu (' + d.goal + ')</h3>' +
-      '<p>1. <strong>Týden 1–2:</strong> Zpracování Komplexní analýzy prodeje a stanovení přesné tržní ceny ČMR.<br>' +
-      '2. <strong>Týden 3–6:</strong> Cílený marketing a nalezení kupujícího s prověřeným financováním.<br>' +
-      '3. <strong>Týden 6–8:</strong> Podpis rezervační smlouvy na novou nemovitost s rozvazovací podmínkou.<br>' +
-      '4. <strong>Týden 8–10:</strong> Synchronizace kupních smluv a advokátních úschov ČMR.<br>' +
-      '5. <strong>Týden 12+:</strong> Předání klíčů a stěhování z původního do nového v jediný den.</p>' +
-      '</section>';
-
-    var fullReportContent = document.getElementById("fullReportContent");
-    if (fullReportContent) fullReportContent.innerHTML = html;
-
-    var fullReportSection = document.getElementById("fullReportSection");
-    if (fullReportSection) fullReportSection.classList.add("visible");
-
-    setTimeout(function() {
-      fullReportSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 300);
-  }
-
-  // 6. RESET TLAČÍTKO
-  var btnReset = document.getElementById("btnReset");
-  if (btnReset) {
-    btnReset.addEventListener("click", function() {
-      if (confirm("Opravdu chcete vymazat všechna zadaná data a začít znovu?")) {
-        document.getElementById("cmrForm").reset();
-        document.getElementById("teaserBox").classList.remove("visible");
-        document.getElementById("leadSection").classList.remove("visible");
-        document.getElementById("fullReportSection").classList.remove("visible");
-        window.currentCalcData = null;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
-  }
-
+document.querySelectorAll("#calc input,.card input[type=radio]").forEach(function(el){
+  el.addEventListener("change",function(){if(!started){started=true;ev("VymenaStart")}});
 });
+
+/* ===== DOPORUČENÍ POŘADÍ ===== */
+function plan(a){
+  var p;
+  if(a.funds==="ano"){
+    p={t:"Doporučené pořadí: nejdřív koupit, pak prodat",
+       d:"Máte prostředky na nové bydlení, takže nejste v časovém tlaku. Nové bydlení vyberete v klidu a stávající prodáte za dobrou cenu.",
+       s:["Vyberete nové bydlení a zajistíte ho rezervací a kupní smlouvou s úschovou.","Stávající nemovitost prodáváte bez tlaku času.","Termín předání sladíme tak, aby mezi stěhováním nevznikla mezera."],
+       r:"Po určitou dobu budete vlastnit obě nemovitosti. Provozní náklady a případné daňové důsledky se vyplatí spočítat předem."};
+  }else if(a.found==="ano"){
+    p={t:"Doporučené pořadí: provázané obchody",
+       d:"Nové bydlení už máte vybrané, ale peníze na něj uvolní až prodej. Rozhoduje, aby smlouvy na sebe časově navazovaly.",
+       s:["Na nové bydlení podepíšete rezervaci s rozvazovací podmínkou, abyste nepřišli o zálohu, pokud se prodej zdrží.","Stávající nemovitost prodáváme cíleně a s ověřeným financováním kupujícího.","Kupní smlouvy a úschovy nastavíme tak, aby peníze z prodeje kryly úhradu nové nemovitosti."],
+       r:"Největší riziko je zdržení jednoho z obchodů. Proto se řeší lhůty a podmínky ve smlouvách ještě před podpisem rezervace."};
+  }else if(a.funds==="cast"){
+    p={t:"Doporučené pořadí: nejdřív prodat s odloženým předáním",
+       d:"Část prostředků máte, ale na celou koupi bez prodeje nestačí. Bezpečnější je prodat první a dohodnout s kupujícím delší lhůtu na vyklizení.",
+       s:["Stávající nemovitost prodáváme a v kupní smlouvě sjednáme odložené předání (typicky několik měsíců).","V této době vyberete nové bydlení s vědomím přesného rozpočtu.","Nákup nového bydlení navážeme na termín vyklizení, případně využijeme dočasné překlenovací řešení."],
+       r:"Odložené předání je potřeba sjednat hned při prodeji a je dobré mít jistotu, že vám stačí čas na výběr nového bydlení."};
+  }else{
+    p={t:"Doporučené pořadí: nejdřív prodat s odloženým předáním",
+       d:"Bez vlastních prostředků na nové bydlení a bez vybrané nemovitosti je nejbezpečnější prodat první s dostatečnou časovou rezervou na stěhování.",
+       s:["Nejdřív si spočítáte, kolik vám po prodeji opravdu zůstane na nákup.","Stávající nemovitost prodáváme s odloženým předáním, aby vám zbyl čas na výběr.","Po prodeji koupíte nové bydlení a termíny sladíme tak, abyste nezůstali bez střechy nad hlavou."],
+       r:"Nekupujte a nerezervujte nic dřív, než budete znát čistou částku z prodeje, včetně případné daně a splacení hypotéky."};
+  }
+  var x=[];
+  if(a.mort==="ano")x.push("Hypotéku nebo zástavu je při prodeji nutné vyplatit a vymazat z katastru. Obvykle se to řeší z peněz kupujícího přes úschovu při podpisu.");
+  x.push(a.dir==="větší"
+    ?"U přechodu do většího bydlení budete rozdíl dofinancovávat. Doporučujeme ověřit hypotéku (příslib banky) dřív, než složíte rezervační zálohu."
+    :"U přechodu do menšího bydlení vám po koupi zůstane rozdíl. Při jeho použití na vlastní bydlení se vyplatí zkontrolovat daňové podmínky osvobození.");
+  p.x=x;return p;
+}
+
+$("#btnCalc").onclick=function(){
+  ans={dir:val("dir"),found:val("found"),funds:val("funds"),mort:val("mort")};
+  var er=$("#calcErr");
+  if(!ans.dir||!ans.found||!ans.funds||!ans.mort){er.textContent="Odpovězte prosím na všechny čtyři otázky.";show(er,true);return}
+  show(er,false);
+  var p=plan(ans);ans.scenario=p.t;
+  var h="<h2></h2><p></p><ol></ol><p class='risk'></p>";
+  $("#plan").innerHTML=h;
+  $("#plan h2").textContent=p.t;$("#plan > p").textContent=p.d;
+  p.s.forEach(function(s){var li=document.createElement("li");li.textContent=s;$("#plan ol").appendChild(li)});
+  $("#plan .risk").textContent=p.r;
+  $("#extra").innerHTML="";
+  p.x.forEach(function(s){var li=document.createElement("li");li.textContent=s;$("#extra").appendChild(li)});
+  show($("#result"),true);show($("#formBox"),true);
+  ev("VymenaDokoncena",{scenario:p.t});
+  initTurnstile();watchForm();
+  $("#result").scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+/* ===== FORMULÁŘ ===== */
+function watchForm(){
+  if(watchForm.done||!("IntersectionObserver" in window))return;watchForm.done=true;
+  var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){ev("FormularZobrazen");io.disconnect()}},{threshold:.3});
+  io.observe($("#formBox"));
+}
+function initTurnstile(){
+  if(initTurnstile.done)return;initTurnstile.done=true;
+  try{
+    if(!window.turnstile)return;
+    window.turnstile.render("#ts",{sitekey:CFG.turnstileKey,appearance:"interaction-only",theme:"light",language:"cs",
+      callback:function(t){tsToken=t},"error-callback":function(){tsToken=""}});
+  }catch(e){}
+}
+function formErr(m){var e=$("#formErr");e.textContent=m;show(e,true)}
+
+$("#btnSend").onclick=function(){
+  if(sent)return;
+  var name=$("#cName").value.trim(),phone=$("#cPhone").value.trim(),email=$("#cEmail").value.trim();
+  if(name.length<2)return formErr("Napište své jméno.");
+  if(phone.replace(/\D/g,"").length<9)return formErr("Zadejte telefon, na kterém vás zastihneme.");
+  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return formErr("E-mail vypadá neúplně. Opravte ho, nebo pole nechte prázdné.");
+  if(!$("#cConsent").checked)return formErr("Pro zavolání je potřeba souhlas se zpracováním údajů.");
+  show($("#formErr"),false);
+
+  var btn=$("#btnSend"),eventId="lead_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
+  if($("#cWeb").value){finish(eventId,true);return}
+  btn.disabled=true;btn.textContent="Odesílám…";
+
+  var u=utm();
+  var funds={ano:"zvládne koupit dřív",cast:"jen částečně",ne:"nezvládne"}[ans.funds]||"";
+  var found={ano:"má vybráno",hledam:"hledá",ne:"nehledá"}[ans.found]||"";
+  var summary="Scénář: "+ans.scenario+" | Nové bydlení: "+found+" | Koupě před prodejem: "+funds+" | Hypotéka/zástava: "+(ans.mort==="ano"?"ano":"ne")+" | Hovor: "+$("#cTime").value;
+  var userNote=$("#cNote").value.trim();
+  var payload={
+    source:CFG.source,eventId:eventId,
+    name:name,phone:phone,email:email,
+    region:$("#cRegion").value.trim(),goal:"přechod do "+(ans.dir==="větší"?"většího":"menšího"),
+    clientNote:summary+(userNote?" | Hledá: "+userNote:""),   /* přistane ve sloupci Poznámka */
+    propType:"",area:"",salePrice:"",
+    scenario:ans.scenario,foundNew:ans.found,fundsBeforeSale:ans.funds,mortgage:ans.mort,callTime:$("#cTime").value,
+    consentContact:true,pageUrl:location.href.split("#")[0],
+    utm_source:u.utm_source,utm_medium:u.utm_medium,utm_campaign:u.utm_campaign,utm_content:u.utm_content,utm_term:u.utm_term,
+    fbclid:u.fbclid,gclid:u.gclid,fbp:u.fbp,fbc:u.fbc,
+    turnstileToken:tsToken   /* prázdný token neblokuje odeslání; ověřte na serveru a lead jen označte */
+  };
+  var ctrl=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ctrl)ctrl.abort()},15000);
+  fetch(CFG.api,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:ctrl?ctrl.signal:undefined})
+    .then(function(r){clearTimeout(to);if(!r.ok)throw new Error("HTTP "+r.status);finish(eventId,false)})
+    .catch(function(){
+      clearTimeout(to);btn.disabled=false;btn.textContent="Zkusit odeslat znovu";
+      formErr("Odeslání se nepovedlo. Údaje máte vyplněné, stačí kliknout znovu. Pomůže i e-mail na info@cmr.cz.");
+      ev("OdeslaniSelhalo");
+    });
+};
+
+function finish(eventId,fake){
+  sent=true;
+  if(!fake){
+    try{fbq('track','Lead',{content_name:CFG.source},{eventID:eventId})}catch(e){}
+    try{gtag('event','generate_lead',{value:1,currency:'CZK'})}catch(e){}
+    if(CFG.adsLeadLabel){try{gtag('event','conversion',{send_to:'AW-1038434503/'+CFG.adsLeadLabel})}catch(e){}}
+    if(CFG.sklikId&&consent==="granted"){
+      var s=document.createElement("script");s.src="https://c.seznam.cz/js/rc.js";
+      s.onload=function(){try{window.rc.conversionHit({id:CFG.sklikId,value:null,consent:1})}catch(e){}};
+      document.head.appendChild(s);
+    }
+  }
+  show($("#formBox"),false);show($("#thanks"),true);
+  $("#thanks").scrollIntoView({behavior:"smooth",block:"start"});
+}
 </script>
 </body>
 </html>
